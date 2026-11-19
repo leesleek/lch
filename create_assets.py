@@ -1,0 +1,113 @@
+import os
+
+os.makedirs('assets', exist_ok=True)
+os.makedirs('css', exist_ok=True)
+os.makedirs('js', exist_ok=True)
+
+# Generate assets/wikipedia-logo.svg
+wiki_logo = '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" width="160" height="40">
+  <g transform="translate(5, 5)">
+    <!-- Globe puzzle circle -->
+    <circle cx="20" cy="20" r="19" fill="#f8f9fa" stroke="#54595d" stroke-width="1.5"/>
+    <!-- Jigsaw lines -->
+    <path d="M8,10 C14,8 26,8 32,10 M5,20 C12,18 28,18 35,20 M8,30 C14,32 26,32 32,30" fill="none" stroke="#72777d" stroke-width="1" stroke-dasharray="2,1"/>
+    <path d="M15,5 C13,12 13,28 15,35 M25,5 C27,12 27,28 25,35" fill="none" stroke="#72777d" stroke-width="1" stroke-dasharray="2,1"/>
+    <!-- Puzzle characters -->
+    <text x="13" y="16" font-family="serif" font-size="8" fill="#202122" font-weight="bold">W</text>
+    <text x="24" y="17" font-family="serif" font-size="8" fill="#202122">Ω</text>
+    <text x="12" y="28" font-family="serif" font-size="7" fill="#202122">維</text>
+    <text x="24" y="29" font-family="serif" font-size="7" fill="#202122">祖</text>
+  </g>
+  <!-- Brand text -->
+  <text x="52" y="24" font-family="'Linux Libertine', 'Noto Serif KR', Georgia, serif" font-size="19" font-weight="bold" fill="#000000" letter-spacing="-0.5px">위키백과</text>
+  <text x="53" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" fill="#54595d" letter-spacing="0.2px">우리 모두의 백과사전</text>
+</svg>'''
+
+with open('assets/wikipedia-logo.svg', 'w', encoding='utf-8') as f:
+    f.write(wiki_logo)
+
+# Generate assets/professor-portrait.svg
+portrait = '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 380" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#eaf2f8"/>
+      <stop offset="100%" stop-color="#d4e3ee"/>
+    </linearGradient>
+    <linearGradient id="suitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1f2937"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="skinGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fae0c8"/>
+      <stop offset="100%" stop-color="#ecc7a8"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="300" height="380" fill="url(#bgGrad)"/>
+  <!-- Decorative university emblem backdrop -->
+  <circle cx="150" cy="150" r="115" fill="none" stroke="#2563eb" stroke-width="1.5" opacity="0.25" stroke-dasharray="6 4"/>
+  <circle cx="150" cy="150" r="95" fill="none" stroke="#2563eb" stroke-width="1" opacity="0.2"/>
+
+  <!-- Body / Suit -->
+  <path d="M50,380 C50,295 85,260 115,250 L150,285 L185,250 C215,260 250,295 250,380 Z" fill="url(#suitGrad)"/>
+  <!-- White shirt collar -->
+  <polygon points="135,250 150,290 165,250 158,240 142,240" fill="#ffffff"/>
+  <!-- Tie -->
+  <polygon points="146,260 154,260 156,345 150,358 144,345" fill="#1d4ed8"/>
+  <line x1="145" y1="285" x2="155" y2="285" stroke="#ffffff" stroke-width="1" opacity="0.4"/>
+  <!-- Suit lapels -->
+  <polygon points="115,250 135,315 150,295 130,250" fill="#111827"/>
+  <polygon points="185,250 165,315 150,295 170,250" fill="#111827"/>
+
+  <!-- Neck -->
+  <rect x="138" y="215" width="24" height="35" fill="#ecc7a8" rx="4"/>
+  <path d="M138,235 C146,242 154,242 162,235 L162,248 L138,248 Z" fill="#dfb387"/>
+
+  <!-- Head -->
+  <ellipse cx="150" cy="165" rx="46" ry="54" fill="url(#skinGrad)"/>
+
+  <!-- Hair -->
+  <path d="M102,165 C100,132 110,105 150,105 C190,105 200,132 198,165 C190,152 182,135 150,135 C118,135 110,152 102,165 Z" fill="#1e2229"/>
+  <path d="M104,148 C106,120 120,110 150,110 C175,110 194,120 196,148 C185,128 165,122 145,124 C125,126 115,134 104,148 Z" fill="#2d333f"/>
+
+  <!-- Glasses -->
+  <rect x="116" y="154" width="28" height="20" rx="5" fill="rgba(255,255,255,0.4)" stroke="#1e293b" stroke-width="2.5"/>
+  <rect x="156" y="154" width="28" height="20" rx="5" fill="rgba(255,255,255,0.4)" stroke="#1e293b" stroke-width="2.5"/>
+  <line x1="144" y1="162" x2="156" y2="162" stroke="#1e293b" stroke-width="2.5"/>
+  <line x1="105" y1="161" x2="116" y2="161" stroke="#1e293b" stroke-width="2"/>
+  <line x1="184" y1="161" x2="195" y2="161" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Eyes -->
+  <circle cx="130" cy="163" r="3.5" fill="#1e293b"/>
+  <circle cx="170" cy="163" r="3.5" fill="#1e293b"/>
+  <circle cx="131" cy="162" r="1.2" fill="#ffffff"/>
+  <circle cx="171" cy="162" r="1.2" fill="#ffffff"/>
+
+  <!-- Eyebrows -->
+  <path d="M118,146 Q130,141 142,147" fill="none" stroke="#1e2229" stroke-width="3" stroke-linecap="round"/>
+  <path d="M158,147 Q170,141 182,146" fill="none" stroke="#1e2229" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Nose -->
+  <path d="M150,163 L147,181 L153,181" fill="none" stroke="#c9986b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Smile / Mouth -->
+  <path d="M138,198 Q150,207 162,198" fill="none" stroke="#a65c52" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Ears -->
+  <path d="M104,158 C100,158 100,178 104,178" fill="#fae0c8" stroke="#c9986b" stroke-width="1.5"/>
+  <path d="M196,158 C200,158 200,178 196,178" fill="#fae0c8" stroke="#c9986b" stroke-width="1.5"/>
+
+  <!-- Academic Badge overlay -->
+  <g transform="translate(205, 300)">
+    <circle cx="26" cy="26" r="24" fill="#ffffff" stroke="#2563eb" stroke-width="2" filter="drop-shadow(0 2px 5px rgba(0,0,0,0.2))"/>
+    <path d="M15,22 L26,16 L37,22 L26,28 Z" fill="#2563eb"/>
+    <polygon points="26,29 23,34 29,34" fill="#2563eb"/>
+    <rect x="25" y="27" width="2" height="7" fill="#f59e0b"/>
+    <text x="26" y="44" font-family="sans-serif" font-size="7" font-weight="bold" fill="#1e3a8a" text-anchor="middle">GINUE</text>
+  </g>
+</svg>'''
+
+with open('assets/professor-portrait.svg', 'w', encoding='utf-8') as f:
+    f.write(portrait)
+
+print('Assets generated successfully.')
