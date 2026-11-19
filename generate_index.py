@@ -251,7 +251,7 @@ full_html = f'''<!DOCTYPE html>
             <tr>
               <td colspan="2" class="infobox-image-cell">
                 <div class="infobox-portrait-wrap">
-                  <img id="portrait-img" src="assets/professor-portrait.svg" alt="이철현 교수 초상">
+                  <img id="portrait-img" src="assets/profile.jpg" onerror="if(this.src.endsWith('.jpg')){this.src='assets/profile.png';}else{this.onerror=null;this.src='assets/professor-portrait.svg';}" alt="이철현 교수 사진">
                 </div>
                 <div class="infobox-photo-actions">
                   <button type="button" class="photo-change-btn" id="photo-change-btn" title="사진 업로드 / 교체">📷 사진 변경</button>

@@ -382,6 +382,12 @@ function initPhotoUploader() {
   const photoBtn = document.getElementById('photo-change-btn');
   const portraitImg = document.getElementById('portrait-img');
 
+  const savedPhoto = localStorage.getItem('wiki_user_photo');
+  if (savedPhoto && portraitImg) {
+    portraitImg.src = savedPhoto;
+    portraitImg.style.objectFit = 'cover';
+  }
+
   if (photoBtn && photoInput) {
     photoBtn.addEventListener('click', () => {
       photoInput.click();
@@ -394,6 +400,11 @@ function initPhotoUploader() {
         reader.onload = (event) => {
           portraitImg.src = event.target.result;
           portraitImg.style.objectFit = 'cover';
+          try {
+            localStorage.setItem('wiki_user_photo', event.target.result);
+          } catch(err) {
+            console.warn('LocalStorage quota exceeded', err);
+          }
         };
         reader.readAsDataURL(file);
       }
